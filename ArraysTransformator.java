@@ -4,10 +4,13 @@ public class ArraysTransformator {
     private int[] inputArray;
     //private int[] outputArray;
 
-    public int[] outputArray(int[] inputArray) {
+    public int[] outputArray(int[] inputArray) throws Not4Exception {
         int[] outputArray;
         if (!detectionIs4(inputArray)) {
             throw new Not4Exception();
+        }
+        else {
+
         }
     }
 
@@ -21,5 +24,15 @@ public class ArraysTransformator {
             }
         }
         return (counter4 > 0);
+    }
+
+    public int detectedAmountNumbersBefore4(int[] inputArray) {
+        int counterAmountNumbersBefore4 = 0;
+        for (int i = inputArray.length - 1; i >= 0; i--) {
+            if (i != 4) {
+                counterAmountNumbersBefore4 += 1;
+            } else break;
+        }
+        return counterAmountNumbersBefore4;
     }
 }
