@@ -4,14 +4,19 @@ public class ArraysTransformator {
     private int[] inputArray;
     //private int[] outputArray;
 
-    public int[] outputArray(int[] inputArray) throws Not4Exception {
-        int[] outputArray;
+    public int[] transformArray(int[] inputArray) throws Not4Exception {
+        int[] resultArray;
         if (!detectionIs4(inputArray)) {
             throw new Not4Exception();
         }
         else {
-
+            int amountNumbersBefore4 = detectedAmountNumbersBefore4(inputArray);
+            resultArray = new int[amountNumbersBefore4];
+            for (int i = 0; i < resultArray.length; i++) {
+                resultArray[i] = inputArray[inputArray.length - resultArray.length + i];
+            }
         }
+        return resultArray;
     }
 
     public boolean detectionIs4(int[] inputArray) {
