@@ -8,17 +8,23 @@ public class ArraysTransformator {
 
         int[] arr = {1, 2, 3};
 
-        System.out.println(tr.detectionIs4(arr));
-        System.out.println(tr.detectAmountNumbersAfter4(arr));
+//        System.out.println(tr.detectionIs4(arr));
+//        System.out.println(tr.detectAmountNumbersAfter4(arr));
         System.out.println("/////////////////////////");
         //System.out.println(tr.transformArray(arr));
-        tr.transformArray(arr);
+        //tr.transformArray(arr);
+        try {
+            tr.transformArray(arr);
+        } catch (Not4Exception ex) {
+            System.out.println(ex.getMessage());
+            System.out.println(ex.getClass().getName());
+        }
     }
 
     public int[] transformArray(int[] inputArray) throws Not4Exception {
         int[] resultArray;
         if (!detectionIs4(inputArray)) {
-            System.out.println("В массиве нет четверок!");
+            //System.out.println("В массиве нет четверок!");
             throw new Not4Exception(inputArray);
         }
         else {
