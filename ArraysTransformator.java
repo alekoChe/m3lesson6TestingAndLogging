@@ -1,5 +1,11 @@
 package ru.gdModule3lesson6.Testing;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class ArraysTransformator {
     private int[] inputArray;
 
@@ -7,13 +13,16 @@ public class ArraysTransformator {
         ArraysTransformator tr = new ArraysTransformator();
 
         int[] arr = {1, 2, 3};
+        int[] arr1 = {1, 2, 3, 4, 5, 6};
+        int[] arr2 = {1, 2, 3, 4, 5, 6,7, 8};
+        int[] arr3 = {4, 1, 4, 9, 10, 11 , 12};
+        int[] arr4 = {0, 1, 2, 4, 1, 4, 5, 6, 7 , 8};
 
-//        System.out.println(tr.detectionIs4(arr));
-//        System.out.println(tr.detectAmountNumbersAfter4(arr));
-        System.out.println("/////////////////////////");
-        //System.out.println(tr.transformArray(arr));
-        //tr.transformArray(arr);
         try {
+            tr.transformArray(arr1);
+            tr.transformArray(arr2);
+            tr.transformArray(arr3);
+            tr.transformArray(arr4);
             tr.transformArray(arr);
         } catch (Not4Exception ex) {
             System.out.println(ex.getMessage());
@@ -24,7 +33,6 @@ public class ArraysTransformator {
     public int[] transformArray(int[] inputArray) throws Not4Exception {
         int[] resultArray;
         if (!detectionIs4(inputArray)) {
-            //System.out.println("В массиве нет четверок!");
             throw new Not4Exception(inputArray);
         }
         else {
@@ -35,8 +43,9 @@ public class ArraysTransformator {
             }
         }
         for (int i = 0; i < resultArray.length; i++) {
-            System.out.println(resultArray[i]);
+            System.out.print(resultArray[i] + ", ");
         }
+        System.out.println();
         return resultArray;
     }
 
@@ -53,12 +62,10 @@ public class ArraysTransformator {
     }
 
     public int detectAmountNumbersAfter4(int[] inputArray) {
-        int counterAmountNumbersAfter4 = 0;
-        for (int i = inputArray.length ; i >= 0; i--) {
-            if (i != 4) {
-                counterAmountNumbersAfter4 += 1;
-            } else break;
-        }
-        return counterAmountNumbersAfter4;
+        List<Integer> listArr = Arrays.stream(inputArray).boxed().collect(Collectors.toList()); // преобразуем массив в список
+        int lengthList = listArr.size();
+        System.out.println(listArr);
+        int indexLastFour = listArr.lastIndexOf(4);
+        return (lengthList - indexLastFour - 1);
     }
 }

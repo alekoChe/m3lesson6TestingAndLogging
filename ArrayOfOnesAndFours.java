@@ -10,7 +10,7 @@ public class ArrayOfOnesAndFours {
 
     public static void main(String[] args) {
         ArrayOfOnesAndFours oAF = new ArrayOfOnesAndFours();
-        oAF.inputArray =new int[] {1, 1,4};
+        oAF.inputArray =new int[] {1, 1, 1};
         System.out.println(oAF.checkIsOnly1And4InArray(oAF.inputArray));
     }
 
@@ -34,7 +34,6 @@ public class ArrayOfOnesAndFours {
         if (otherNumbers == false && is1 == true && is4 == true) {
             numbersAreOnly1And4 = true;
         }
-        //List intList = new ArrayList<>(Arrays.asList(inputArray));
         return numbersAreOnly1And4;
     }
     public boolean detectionIsOneInArray(int[] inputArray) {
